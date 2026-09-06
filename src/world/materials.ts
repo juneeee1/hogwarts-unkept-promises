@@ -34,9 +34,10 @@ function surface(kind: 'stone' | 'roof' | 'floor' | 'wood') {
   const texture=new T.CanvasTexture(canvas); texture.colorSpace=T.SRGBColorSpace; texture.wrapS=texture.wrapT=T.RepeatWrapping; texture.anisotropy=4;
   return texture;
 }
-export function makeMaterials(onTextureError?:(message:string)=>void) {
+export function makeMaterials(onTextureError?:(message:string)=>void,onReady?:()=>void) {
   const stone=surface('stone'), wood=surface('wood');
-  const loader=new T.TextureLoader();
+  const manager=new T.LoadingManager(onReady);
+  const loader=new T.TextureLoader(manager);
   const tex=(asset:string|{src:string},srgb=false)=>{const url=typeof asset==="string"?asset:asset.src;const t=loader.load(url,undefined,undefined,()=>onTextureError?.('部分材质尚未加载成功，请重新载入城堡。'));t.wrapS=t.wrapT=T.RepeatWrapping;t.anisotropy=8;if(srgb)t.colorSpace=T.SRGBColorSpace;return t;};
   const stonePbr={map:tex(stoneColor,true),normalMap:tex(stoneNormal),roughnessMap:tex(stoneRough)};
   const roofPbr={map:tex(roofColor,true),normalMap:tex(roofNormal),roughnessMap:tex(roofRough)};

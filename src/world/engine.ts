@@ -21,13 +21,13 @@ export class CastleEngine {
   private orbit={theta:.7,phi:1.04,radius:158};private autoOrbit=true;private mobile=false;private bob=0;private castTime=-10;private portalCooldown=0;private nearPortal=false;
   private glow:T.Sprite;private sparks:T.Points;private sparkVel:Float32Array;private starField:T.Points;private moon:T.Sprite;private resizeObserver:ResizeObserver;private reducedMotion=false;
   private snapshot:EngineState={place:'bridge',heading:0,nearPortal:false,lumos:false,mode:'overview',fps:60};
-  constructor(public container:HTMLElement,private onState:(s:EngineState)=>void,private onError:(message:string)=>void) {
+  constructor(public container:HTMLElement,private onState:(s:EngineState)=>void,private onError:(message:string)=>void,onReady:()=>void) {
     this.mobile=matchMedia('(pointer: coarse)').matches||innerWidth<768;this.reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.renderer=new T.WebGLRenderer({antialias:!this.mobile,powerPreference:'high-performance',alpha:false,preserveDrawingBuffer:false});
     this.renderer.setClearColor(0x101b25);this.renderer.outputColorSpace=T.SRGBColorSpace;this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.25;
     this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=T.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false;
     this.renderer.domElement.setAttribute('aria-label','可交互的三维霍格沃茨城堡，拖动环视');this.renderer.domElement.setAttribute('role','img');container.appendChild(this.renderer.domElement);
-    const materials=makeMaterials(this.onError);this.scene.fog=new T.FogExp2(0x132a37,.0035);
+    const materials=makeMaterials(this.onError,()=>{if(!this.ended)onReady();});this.scene.fog=new T.FogExp2(0x132a37,.0035);
     const hemi=new T.HemisphereLight(0xa9cddd,0x363126,.85);this.scene.add(hemi);
     const moonlight=new T.DirectionalLight(0xbbd4e4,3.3);moonlight.position.set(-65,110,48);moonlight.castShadow=true;moonlight.shadow.mapSize.set(2048,2048);Object.assign(moonlight.shadow.camera,{left:-70,right:70,top:80,bottom:-70,near:1,far:240});moonlight.shadow.bias=-.0008;moonlight.shadow.normalBias=.15;this.scene.add(moonlight);
     const sunset=new T.DirectionalLight(0xefbc86,.9);sunset.position.set(75,30,-50);this.scene.add(sunset);
