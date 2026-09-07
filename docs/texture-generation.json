@@ -1,0 +1,45 @@
+{
+  "generator": "built-in imagegen",
+  "requested_concurrently": true,
+  "assets": [
+    {
+      "name": "wizard_portraits_atlas",
+      "path": "/Users/smzdm/.codex/generated_images/01a079e1-724c-7e90-8b7d-ffcd4d7bfe00/exec-cebcbb76-5a36-4af7-a8ac-3a25f03d0e86.png",
+      "width": 1330,
+      "height": 1182,
+      "format": "PNG",
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "order": [
+        "elderly astronomer",
+        "witch with owl",
+        "bearded scholar",
+        "stern headmistress",
+        "young adult herbalist",
+        "sleeping wizard"
+      ],
+      "final_prompt": "Use case: stylized-concept\nAsset type: production game texture atlas for six separate 3D portrait meshes.\nCreate one original atlas arranged as a precise 3-column by 2-row grid of SIX DIFFERENT full-bleed, UNFRAMED vertical 3:4 oil paintings. Target overall 1536 x 1365 pixels, or the closest supported output to a 9:8 overall aspect ratio. Equal-sized rectangular cells, straight mathematical divisions at exactly one-third and two-thirds of the width and one-half of the height. Every painting extends to all four edges of its own cell. Zero gutters, zero borders, zero margins, zero visible grid lines. Six complete paintings tightly tiled edge-to-edge.\nSubjects in reading order: top-left an elderly male astronomer with brass astronomical instruments; top-middle an adult witch with an owl; top-right a bearded male scholar; bottom-left a stern older headmistress; bottom-middle a young adult herbalist with herbs; bottom-right a sleeping elderly wizard. Distinct original faces, clothing, silhouettes, and poses. Each portrait contains one person, composed head-and-torso within the vertical cell, with comfortable headroom and no content crossing into neighboring cells.\nStyle: original late-medieval wizard and witch portraits belonging to an old British magical boarding school; traditional hand-painted oils, restrained chiaroscuro, warm earthy browns, ochres and muted tones, aged canvas grain and subtle worn paint. Each figure has its own dark painterly backdrop within the painting. Cohesive craft and palette across all six, expressive character differences, readable faces at game texture scale.\nConstraints: show ONLY the six flat paintings, viewed straight on, as texture pixels. No picture frames, mats, plaques, architecture, galleries, walls, environmental scene, perspective mockups, cast shadows around cells, UI, text, letters, numerals, signatures, watermarks, modern objects, known actors, recognizable franchise characters, or existing artworks. Preserve the exact 3x2 arrangement and edge-to-edge coverage."
+    },
+    {
+      "name": "heraldic_fabric_atlas",
+      "path": "/Users/smzdm/.codex/generated_images/01a079e1-724c-7e90-8b7d-ffcd4d7bfe00/exec-56ee9a0d-6f3b-4540-b0da-04b3028796d7.png",
+      "width": 1254,
+      "height": 1254,
+      "format": "PNG",
+      "grid": {
+        "columns": 2,
+        "rows": 2
+      },
+      "order": [
+        "gold lion / wine red",
+        "silver serpent / forest green",
+        "bronze eagle / midnight blue",
+        "black badger / ochre"
+      ],
+      "final_prompt": "Use case: stylized-concept\nAsset type: production game texture atlas for four embroidered medieval heraldic fabric meshes.\nCreate one square atlas, target 1536 x 1536 pixels or closest supported square output, with a precise 2-column by 2-row grid of FOUR full-bleed embroidered heraldic fabric panels. Four exactly equal square quadrants; mathematical divisions at exactly half the width and half the height. No gaps, outer margins, framing strips, or drawn divider lines. Fabric fills each entire quadrant right to its edges.\nQuadrants in reading order: top-left a GOLD LION on WINE RED fabric; top-right a SILVER SERPENT on FOREST GREEN fabric; bottom-left a BRONZE EAGLE on MIDNIGHT BLUE fabric; bottom-right a BLACK BADGER on OCHRE fabric. Reference only these four Hogwarts house animal-and-color associations; create entirely original heraldic drawings and ornamental arrangements, never reproduce the actual Hogwarts or house logos.\nEach panel has one centered medieval coat of arms, a clearly identifiable animal inside an original ornate shield composition, with tasteful embroidered medieval foliage and flourishes. Keep the central coat of arms and its ornamentation fully inside its own quadrant. Match the visual scale of all four emblems. Rich woven fabric, fine thread grain, raised embroidery, subtly aged fibers, gold/silver/bronze thread where specified. Deep harmonious textile colors, detailed tactile craftsmanship, animal silhouettes legible at game texture scale.\nView: straight-on flat fabric surface, evenly presented for direct use as mesh texture pixels. Only the woven and embroidered surfaces, no room, wall, furniture, hanging rods, people, environmental background, product mockup, perspective, draping that warps the grid, or deep folds. No UI, words, lettering, initials, numbers, ribbons containing writing, signatures, watermarks, existing exact logos, or gaps. Preserve exact equal 2x2 quadrants with edge-to-edge fabric coverage."
+    }
+  ],
+  "inspection": "Visually inspected both generated images: correct subject count and reading order; edge-to-edge paintings/textiles; no visible lettering, gaps, environmental mockups, or UI. Native output sizes differ from requested targets. No image postprocessing performed."
+}

@@ -1,3 +1,6 @@
+@import '../src/game/game.css';
+@import '../src/game/polish.css';
+@import '../src/game/letter.css';
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -12,3 +15,45 @@
 @media(max-width:360px){.brand-wordmark{display:none}.arrival-actions{gap:15px}.enter-button{min-width:162px}.arrival-note{font-size:9px}.arrival{left:23px}.movement-pad{left:18px;width:102px;height:102px}.spell-controls{right:19px;gap:11px}.map-layout{grid-template-columns:1fr}.map-drawing{display:none}.place-list{gap:0}.place-option{padding:12px 5px}.place-option small{font-size:9px}.place-option strong{font-size:14px}}
 @media(max-height:550px) and (orientation:landscape){.topbar,.is-walking .topbar{padding:16px 27px}.brand-wordmark small{display:none}.top-location{display:none}.overview-caption{top:75px;right:28px}.arrival{left:36px;bottom:57px}.arrival h1{font-size:35px;line-height:1.2;margin:9px 0}.arrival h1 span{font-size:24px;display:inline;margin-left:13px}.arrival>p{font-size:12px;margin:9px 0 15px}.arrival .eyebrow{font-size:8px}.enter-button{padding:11px 15px;min-width:165px;font-size:12px}.arrival-note{margin-top:10px;font-size:9px}.destination-preview{width:165px;bottom:67px;right:30px}.dest-title{padding-bottom:9px;font-size:10px}.destination-preview button{padding:9px 0}.destination-preview button>span:nth-child(2){font-size:11px}.destination-preview small{font-size:7px;margin-top:3px}.overview-footer{bottom:18px;left:29px;right:29px;font-size:8px}.compass-bar{top:34px}.walk-location{top:83px;left:28px}.walk-location h2{font-size:21px}.walk-location>span{font-size:8px}.movement-pad{bottom:60px;left:30px;width:90px;height:90px}.spell-controls{bottom:69px;right:30px}.walk-footer{bottom:10px;left:30px;right:30px}.walk-hint{top:80px;bottom:auto;font-size:10px}.portal-action{bottom:92px}.castle-dialog{max-height:calc(100dvh - 20px);padding:20px!important}.map-layout{margin:12px 0;grid-template-columns:.8fr 1.2fr}.map-drawing svg{max-height:270px;min-height:200px}.place-option{padding:8px}.place-option strong{font-size:12px}.place-option small{font-size:8px}.map-dialog{max-width:670px!important}.dialog-title{font-size:20px!important}.dialog-description{font-size:11px!important}.map-bottom{padding-top:9px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.fine-grain{display:none}}
+/* Responsive game HUD follows the viewport, including embedded Storvia WebViews. */
+.experience{height:100dvh;min-height:0;overscroll-behavior:none;--hud-left:max(24px,env(safe-area-inset-left));--hud-right:max(24px,env(safe-area-inset-right));--hud-bottom:max(18px,env(safe-area-inset-bottom))}
+.world-canvas,.world-canvas canvas{width:100%;height:100%;touch-action:none;overscroll-behavior:none}
+.topbar{padding-left:max(30px,env(safe-area-inset-left));padding-right:max(30px,env(safe-area-inset-right));padding-top:max(22px,env(safe-area-inset-top))}
+.icon-button{min-width:44px;min-height:44px}.movement-pad,.spell-controls,.walk-footer{z-index:12}.movement-pad{left:var(--hud-left)}.spell-controls{right:var(--hud-right)}
+.walk-footer{left:var(--hud-left);right:var(--hud-right);bottom:var(--hud-bottom)}
+.scene-message{position:absolute;left:50%;top:24%;transform:translateX(-50%);width:min(460px,calc(100% - 48px));padding:16px 20px;background:linear-gradient(100deg,#151b1dda,#21221bde);border:1px solid #cbb58155;border-radius:3px;color:#e6dcc2;text-align:center;font:15px/1.9 var(--serif);backdrop-filter:blur(12px);pointer-events:none;z-index:11;text-shadow:0 1px 2px #000}
+.portal-action{z-index:13;max-width:calc(100% - 40px);min-height:46px;text-align:center;line-height:1.4;white-space:normal}.portal-action:disabled{opacity:.7;cursor:wait}.portal-action kbd{flex-shrink:0}
+.castle-dialog{width:min(800px,calc(100vw - max(32px,env(safe-area-inset-left)) - max(32px,env(safe-area-inset-right))))!important;max-height:calc(100dvh - max(24px,env(safe-area-inset-top)) - max(24px,env(safe-area-inset-bottom)))}
+.place-option{min-height:52px}.place-option small{font-size:11px}.place-option strong{font-size:14px}.map-bottom{flex-wrap:wrap;line-height:1.7;font-size:12px}.discoveries{white-space:nowrap}.walk-location>span{font-size:11px}.lumos-button span{font-size:11px}
+@media(orientation:portrait){
+ .overview-caption{top:calc(96px + env(safe-area-inset-top))}.arrival{bottom:calc(85px + env(safe-area-inset-bottom))}.is-walking .topbar{padding-top:max(16px,env(safe-area-inset-top))}
+ .top-location{display:none}.walk-location{top:calc(118px + env(safe-area-inset-top));left:var(--hud-left)}.compass-bar{top:calc(90px + env(safe-area-inset-top))}
+ .movement-pad{bottom:calc(88px + env(safe-area-inset-bottom));width:clamp(96px,27vw,124px);height:clamp(96px,27vw,124px)}.spell-controls{bottom:calc(103px + env(safe-area-inset-bottom));gap:12px}.cast-button{width:74px;height:74px}.lumos-button{width:60px;height:60px}
+ .walk-hint{top:auto;bottom:calc(220px + env(safe-area-inset-bottom));font-size:12px;white-space:normal;width:max-content;max-width:calc(100% - 40px);line-height:1.6}.portal-action{bottom:calc(272px + env(safe-area-inset-bottom));font-size:14px}
+ .scene-message{top:calc(184px + env(safe-area-inset-top));font-size:14px}.map-layout{grid-template-columns:1fr}.map-drawing{display:none}.place-option{padding:10px}.map-dialog .dialog-description{font-size:14px!important}.map-bottom>span:last-child{max-width:100%}
+}
+@media(orientation:landscape) and (max-height:600px){
+ .topbar,.is-walking .topbar{padding: max(9px,env(safe-area-inset-top)) var(--hud-right) 0 var(--hud-left)}.brand-seal{width:28px;height:34px;font-size:23px}.brand-wordmark{font-size:13px}.brand-wordmark small,.top-location,.overview-caption,.destination-preview{display:none}.top-tools{gap:6px}.icon-button{width:42px;height:42px;min-width:42px;min-height:42px}
+ .arrival{left:max(30px,env(safe-area-inset-left));bottom:55px}.arrival h1{font-size:34px;line-height:1.1}.arrival h1 span{font-size:24px;display:inline;margin-left:14px}.arrival>p{margin:10px 0 16px;font-size:14px}.arrival-note{display:none}.arrival .eyebrow{font-size:11px}.overview-footer{bottom:var(--hud-bottom);font-size:11px}
+ .compass-bar{top:max(24px,env(safe-area-inset-top));gap:12px}.walk-location{top:68px;left:var(--hud-left)}.walk-location h2{font-size:20px;margin-top:5px}.walk-location>span{font-size:10px}
+ .movement-pad{bottom:calc(54px + env(safe-area-inset-bottom));width:98px;height:98px}.stick-center{width:42px;height:42px}.spell-controls{bottom:calc(66px + env(safe-area-inset-bottom));gap:13px}.cast-button{width:68px;height:68px}.lumos-button{width:58px;height:58px}.cast-button span,.lumos-button span{font-size:11px}.spell-controls kbd{display:none}
+ .walk-footer{bottom:max(7px,env(safe-area-inset-bottom));font-size:12px}.walk-footer button{min-height:38px}.discoveries{font-size:12px}.walk-hint{top:66px;bottom:auto;font-size:12px;max-width:calc(100% - 380px);white-space:normal;text-align:center;line-height:1.5}.portal-action{bottom:calc(68px + env(safe-area-inset-bottom));padding:10px 14px;font-size:14px;max-width:calc(100% - 350px)}
+ .scene-message{top:112px;width:min(460px,calc(100% - 310px));padding:11px 16px;font-size:14px;line-height:1.6}
+ .castle-dialog{padding:20px!important}.map-layout{grid-template-columns:.65fr 1fr;margin:10px 0;gap:18px}.map-drawing{display:block}.map-drawing svg{max-height:245px;min-height:180px}.place-option{min-height:44px;padding:7px}.place-option small{display:none}.place-option strong{font-size:14px}.dialog-title{font-size:21px!important}.dialog-description{font-size:13px!important}
+}
+@media(orientation:landscape) and (max-height:360px){.walk-hint{display:none}.walk-location>span{display:none}.walk-location{top:55px}.scene-message{top:94px;line-height:1.45}.arrival .eyebrow{display:none}.arrival>p{font-size:12px;margin:9px 0}.arrival h1{font-size:28px}.movement-pad{width:86px;height:86px}.arrival{bottom:49px}.portal-action{bottom:52px}.overview-footer{font-size:10px}}
+@media(orientation:portrait) and (max-width:370px){.spell-controls{gap:8px}.cast-button{width:64px;height:64px}.lumos-button{width:54px;height:54px}.movement-pad{left:17px}.spell-controls{right:17px}.walk-footer .discoveries{font-size:11px}.scene-message{font-size:13px;line-height:1.6}}
+
+/* Touch actions size to their labels after removing keyboard badges. */
+.portal-action{width:max-content}
+.portal-action svg,.setting-row [data-slot=switch]{flex-shrink:0}
+.castle-dialog{width:min(800px,calc(100vw - max(16px,env(safe-area-inset-left)) - max(16px,env(safe-area-inset-right))))!important}
+.quality-options label{white-space:nowrap}
+@media(max-width:359px){
+ .castle-dialog{padding:18px!important}
+ .settings-dialog .dialog-title{font-size:25px}
+ .quality-options{flex-direction:column}
+ .quality-options label{justify-content:flex-start;padding:10px 12px}
+ .setting-row label{gap:8px;font-size:13px}
+ .setting-row small{font-size:11px}
+}

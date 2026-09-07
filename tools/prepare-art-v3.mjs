@@ -1,0 +1,5 @@
+import sharp from 'sharp';
+const source='outputs/art-v3/icons-source.png';
+const rects=[[39,20,209,255],[272,25,269,250],[550,42,220,244],[799,43,210,233],[1064,26,195,253],[1325,30,180,248],[25,292,229,225],[337,279,147,240],[557,290,190,225],[789,289,229,230],[1036,284,235,237],[1305,299,204,222],[68,518,173,224],[296,523,230,220],[548,522,225,225],[779,516,231,226],[1030,548,236,186],[1275,526,238,220],[50,751,179,239],[278,768,253,215],[537,770,231,224],[789,749,181,243],[1024,754,235,239],[1281,770,239,220]];
+const tiles=[];for(let i=0;i<rects.length;i++){const [left,top,width,height]=rects[i];const input=await sharp(source).extract({left,top,width,height}).resize(168,168,{fit:'contain',background:'#f7edda'}).extend({top:12,bottom:12,left:12,right:12,background:'#f7edda'}).png().toBuffer();tiles.push({input,left:(i%6)*192,top:Math.floor(i/6)*192});}
+await sharp({create:{width:1152,height:768,channels:3,background:'#f7edda'}}).composite(tiles).webp({quality:86,effort:6}).toFile('src/assets/polish-v3/story-objects.webp');

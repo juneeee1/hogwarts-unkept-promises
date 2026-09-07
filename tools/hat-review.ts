@@ -1,0 +1,16 @@
+import * as T from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {makeMaterials} from '../src/world/materials';
+import {Builder} from '../src/world/builder';
+import {buildSortingHatDisplay} from '../src/world/sorting-hat';
+const scene=new T.Scene();scene.background=new T.Color(0x1b1915);
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;document.body.appendChild(renderer.domElement);
+const pmrem=new T.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;scene.environmentIntensity=.35;
+const m=makeMaterials(),b=new Builder(scene,m);buildSortingHatDisplay(b,0,0,0);
+b.finish();const floor=new T.Mesh(new T.PlaneGeometry(200,200),new T.MeshStandardMaterial({color:0x26241f,roughness:.85}));floor.rotation.x=-Math.PI/2;floor.position.y=-.005;floor.receiveShadow=true;scene.add(floor);
+const key=new T.DirectionalLight(0xffdbb3,3.2);key.position.set(-3,6,5);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=key.shadow.camera.bottom=-3;key.shadow.camera.right=key.shadow.camera.top=3;key.shadow.bias=-.0003;scene.add(key);
+const fill=new T.DirectionalLight(0xb8c3d4,.65);fill.position.set(4,3,2);scene.add(fill);const rim=new T.DirectionalLight(0xc2a58a,1.5);rim.position.set(1,4,-3);scene.add(rim);
+const camera=new T.PerspectiveCamera(38,innerWidth/innerHeight,.05,100);camera.position.set(.2,2.4,5.4);const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(-.05,1.18,0);controls.enableDamping=true;controls.update();
+const positions:Record<string,[number,number,number]>={front:[.2,2.4,5.4],side:[4.2,2.45,3.1],back:[-.4,2.55,-5.4]};for(const [id,pos] of Object.entries(positions))document.getElementById(id)!.onclick=()=>{camera.position.set(...pos);controls.update();};
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
